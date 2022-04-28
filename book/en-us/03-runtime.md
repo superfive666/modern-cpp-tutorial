@@ -136,6 +136,9 @@ to generate generic meanings:
 
 ```cpp
 void lambda_generic() {
+    // also can specify the return type of the lambda, which in this case is not meaningful
+    // because the return type is inferred from the type of x and y
+    // auto generic = [](auto x, auto y) -> auto {
     auto generic = [](auto x, auto y) {
         return x+y;
     };
@@ -339,7 +342,7 @@ void reference(std::string&& str) {
 int main()
 {
     std::string  lv1 = "string,";       // lv1 is a lvalue
-    // std::string&& r1 = s1;           // illegal, rvalue can't ref to lvalue
+    // std::string&& r1 = lv1;           // illegal, rvalue can't ref to lvalue
     std::string&& rv1 = std::move(lv1); // legal, std::move can convert lvalue to rvalue
     std::cout << rv1 << std::endl;      // string,
 
